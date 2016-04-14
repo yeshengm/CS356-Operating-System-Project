@@ -1,0 +1,1 @@
+cmd_/home/manifold/prj/hello.ko := arm-linux-androideabi-ld -r  -T /home/manifold/kernel/goldfish/scripts/module-common.lds --build-id  -o /home/manifold/prj/hello.ko /home/manifold/prj/hello.o /home/manifold/prj/hello.mod.o

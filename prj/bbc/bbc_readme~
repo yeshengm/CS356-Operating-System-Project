@@ -1,0 +1,13 @@
+cook, cashier, customer are all threads
+
+
+cook
+
+
+cashier:
+    * wake by a comming customer
+    * accept an order
+    * take burger to customer
+    * go to sleep
+cunstomer
+    * come and order

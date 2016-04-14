@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <string.h>
+#include "prinfo.h"
+
+void print_prinfo(struct prinfo *buf)
+{
+    printf("%s %4d %4d %d %d %ld %ld\n", 
+        buf->comm, 
+        buf->pid, 
+        buf->parent_pid, 
+        buf->first_child_pid,
+        buf->next_sibling_pid,
+        buf->state,
+        buf->uid
+        );
+}
+
+void print_tab(int n) {
+    while (n--)
+        printf("    ");
+}
+                
+void print_pstree(struct prinfo *buf, int ps_size) {
+    int *depth;
+    int i = 0;
+    int j = 0;
+    depth = malloc(ps_size*sizeof(int));
+    memset(depth, 0, ps_size);
+    
+    for (i = 0; i < ps_size; ++i) {
+        if (i == 0) {
+            print_prinfo(buf);
+        } else {
+            if (buf[i].parent_pid == buf[i-1].pid) {
+                depth[i] = depth[i-1] + 1;
+            } else {
+                for (j = i-1; j >= 0; --j) {
+                    if (buf[j].parent_pid == buf[i].parent_pid) {
+                        depth[i] = depth[j];
+                        break;
+                    }
+                }
+            }
+            print_tab(depth[i]);
+            print_prinfo(buf+i);
+       }
+    }
+    free(depth);
+}
+        
+int main(void) 
+{
+    printf("test ptree\n");
+	int num = 100;
+	int i = 0;
+	int tab_cnt = 0;
+    struct prinfo buf[100];
+    
+    if (syscall(223, buf, &num) != 0) {
+        printf("ERROR: ptree failure\n");
+        return -1;
+    }
+    printf("buf fetched sucessfully\n");
+    printf("comm, pid, parent_pid, child_pid, sibling_pid, state, uid\n\n");
+
+    print_pstree(buf, num);
+    
+    printf("\ntest ptree over\n");
+    return 0;
+}
+

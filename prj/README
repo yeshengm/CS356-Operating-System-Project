@@ -1,0 +1,36 @@
+This is the readme of CS356 Operating System Project 1.
+author: Ma Yesheng
+studeng number: 5140209064
+dept: CS, Shanghai Jiao Tong University
+========================================================
+
+1. Introduction
+This is project 1 of CS356 Oprating System at SJTU, which includes an implementation
+of Android pstree and a simulation of burger buddies problem using pthread and semaphore.
+
+2. File Structure
+-5140209064OSPrj
+    -pstree_syscall
+        -prinfo.h: the header file for syscall module ptree.c
+        -ptree.c: the implementation of syscall module ptree
+        -MakeFile: cross compilation makefile for ptree.c
+    -pstree
+        -jni
+            -prinfo.h: the header file for program pstree.c
+            -pstree.c: pstree source, which takes a single argument of pstree size
+            -Android.mk: makefile for pstree.c
+    -parent_child
+        -jni
+            -parent_child.c: a program to test the relation of parent and child process and print pstree in the child
+            -Android.mk: makefile for parent_child.c
+    -bbc
+        -BurgerBuddies.c: program for burgur buddies problem, compile with "gcc -pthread", takes four arguments
+    -test_runs
+        -test_runs.txt: this file records the running of above programs in several cases
+        
+3. Environment
+compile environment: gcc 5.2, Linux 4.3
+android kernel version: Linux 3.x
+
+4. License
+Distributed in MIT license.

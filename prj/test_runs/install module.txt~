@@ -1,0 +1,81 @@
+1. install module to kernel:
+    root@generic:/data/project # insmod ptree.ko                                   
+    root@generic:/data/project # lsmod                                             
+    Module                  Size  Used by
+    ptree                   2035  0
+    
+    
+    
+2. test ptree syscall in shell:
+    root@generic:/data/project # ./pstree 100                                      
+    swapper 0 0 0 1 0 0
+        init 1 1 0 45 2 0
+            ueventd 45 1 1 0 62 0
+            logd 62 1 1 0 63 1036
+            vold 63 1 1 0 67 0
+            healthd 67 1 1 0 68 0
+            lmkd 68 1 1 0 69 0
+            servicemanager 69 1 1 0 70 1000
+            surfaceflinger 70 1 1 0 76 1000
+            qemud 76 1 1 0 79 0
+            sh 79 1 1 0 80 2000
+            adbd 80 1 1 233 82 0
+                sh 233 1 80 699 1 0
+                    pstree 699 0 233 0 1 0
+            debuggerd 82 1 1 0 83 0
+            rild 83 1 1 0 84 1001
+            drmserver 84 1 1 0 86 1019
+            installd 86 1 1 0 87 0
+            keystore 87 1 1 0 92 1017
+            gatekeeperd 92 1 1 0 93 1000
+            perfprofd 93 1 1 0 94 0
+            fingerprintd 94 1 1 0 446 1000
+            bootanimation 446 1 1 0 587 1003
+            netd 587 1 1 700 588 0
+                iptables 700 0 587 0 1 0
+            mediaserver 588 1 1 0 589 1013
+            main 589 0 1 0 1 0
+        kthreadd 2 1 0 3 0 0
+            ksoftirqd/0 3 1 2 0 4 0
+            kworker/0:0 4 1 2 0 5 0
+            kworker/u:0 5 1 2 0 6 0
+            khelper 6 1 2 0 7 0
+            sync_supers 7 1 2 0 8 0
+            bdi-default 8 1 2 0 9 0
+            kblockd 9 1 2 0 10 0
+            rpciod 10 1 2 0 11 0
+            kworker/0:1 11 1 2 0 12 0
+            kswapd0 12 1 2 0 13 0
+            fsnotify_mark 13 1 2 0 14 0
+            crypto 14 1 2 0 25 0
+            kworker/u:1 25 1 2 0 30 0
+            mtdblock0 30 1 2 0 35 0
+            mtdblock1 35 1 2 0 40 0
+            mtdblock2 40 1 2 0 41 0
+            binder 41 1 2 0 42 0
+            deferwq 42 1 2 0 43 0
+            kworker/u:2 43 1 2 0 44 0
+            mmcqd/0 44 1 2 0 47 0
+            jbd2/mtdblock0- 47 1 2 0 48 0
+            ext4-dio-unwrit 48 1 2 0 49 0
+            kworker/0:2 49 1 2 0 52 0
+            flush-31:1 52 1 2 0 54 0
+            jbd2/mtdblock1- 54 1 2 0 55 0
+            ext4-dio-unwrit 55 1 2 0 58 0
+            flush-31:2 58 1 2 0 60 0
+            jbd2/mtdblock2- 60 1 2 0 61 0
+            ext4-dio-unwrit 61 1 2 0 75 0
+            kauditd 75 1 2 0 0 0
+            
+kernel log for ptree syscall:
+    root@generic:/data/project # dmesg -c  
+    INFO ptree: kern_buf created sucessfully
+    44 of prinfo memory unused
+    INFO ptree: buf copied successfully
+    
+    
+    
+    
+3. test parent child relationship:
+
+
