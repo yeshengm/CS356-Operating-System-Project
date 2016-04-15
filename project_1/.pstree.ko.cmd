@@ -1,1 +1,0 @@
-cmd_/home/manifold/prj/pstree.ko := arm-linux-androideabi-ld -r  -T /home/manifold/kernel/goldfish/scripts/module-common.lds --build-id  -o /home/manifold/prj/pstree.ko /home/manifold/prj/pstree.o /home/manifold/prj/pstree.mod.o
