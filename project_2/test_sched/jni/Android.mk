@@ -1,9 +1,9 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := test.c
-LOCAL_MODULE := testARM
-LOCAL_CFLAGS += -pie -fPIE -I/home/manifold/kernel/goldfish
+LOCAL_SRC_FILES := test_sched.c
+LOCAL_MODULE := test_sched
+LOCAL_CFLAGS += -pie -fPIE
 LOCAL_LDFLAGS += -pie -fPIE
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
