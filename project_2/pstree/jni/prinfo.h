@@ -3,6 +3,7 @@
 
 #include <linux/types.h>
 #include <linux/sched.h>
+
 /*
  * this file is the header of the type prinfo
  * which stores the information required by the 
@@ -16,7 +17,7 @@ struct prinfo {
     pid_t next_sibling_pid;
     long state;
     long uid;
-    char comm[TASK_COMM_LEN];
+    char comm[16];
     long prio;
 };
 

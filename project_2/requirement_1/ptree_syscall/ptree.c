@@ -62,6 +62,7 @@ static int copy_prinfo_from_task(struct prinfo *dst, struct task_struct *src)
     dst->state = src->state;
     dst->uid = src->cred->uid;
     get_task_comm(dst->comm, src);
+	dst->prio = src->prio;
     return 0;
 }
 

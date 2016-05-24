@@ -22,6 +22,7 @@ struct prinfo {
     long state;
     long uid;
     char comm[16];
+	long prio;
 };
 
 /* get_sched_str: print scheduler according to sched number */
@@ -89,7 +90,7 @@ int main(int argc, char **argv)
 		if (strcmp(buf[i].comm, "main") == 0)
 			main_index = buf[i].pid;
 		if (buf[i].parent_pid == main_index || buf[i].pid == main_index)
-			printf("task %s has scheduler %s\n", buf[i].comm, get_sched_str(sched_getscheduler(buf[i].pid)));
+			printf("task %s has scheduler %s and priority %ld\n", buf[i].comm, get_sched_str(sched_getscheduler(buf[i].pid)), buf[i].prio);
 	}
     free(buf);
     return 0;
