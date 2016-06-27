@@ -19,9 +19,10 @@ int main(int argc, char **argv)
 	begin = clock();
 	int sum = 0;
 	int i;
-	for (i = 0; i <= N; ++i) {
-		sum += i;
-	}
+	int j;
+	for (j = 0; j <= 5; ++j)
+		for (i = 0; i <= N; ++i)
+			sum += i;
 	end = clock();
 	printf("my_test over, time consumed %d ms\n", 
 		(int)((double)(end-begin)/CLOCKS_PER_SEC*1000));
